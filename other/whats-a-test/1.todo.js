@@ -21,3 +21,15 @@ error if the subtract function were to have a bug
 // sum is intentionally broken so you can see errors in the tests
 const sum = (a, b) => a - b
 const subtract = (a, b) => a - b
+
+const testSum = (func, ...args) => {
+  const total = args[0] + args[1]
+  const funcTotal = func(...args)
+  if (funcTotal !== total) {
+    throw new Error(`Expected ${funcTotal} to be ${total}`)
+  }
+
+  return true
+}
+
+testSum(sum, 1, 3)
